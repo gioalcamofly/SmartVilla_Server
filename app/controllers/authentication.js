@@ -30,6 +30,18 @@ exports.login = function(req, res, next){
 
 }
 
+exports.delete = function(req, res, next) {
+  var id = req.params.id;
+
+  User.deleteOne({ _id : id }, function(err, obj) {
+    if (err) {
+      return res.status(422).send({error: err});
+    } else {
+      return res.status(201).send({delete: 'User deleted correctly'});
+    }
+  })
+}
+
 exports.register = function(req, res, next){
 
     var email = req.body.email;

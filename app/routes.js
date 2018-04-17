@@ -20,6 +20,7 @@ module.exports = function(app){
 
     authRoutes.post('/register', AuthenticationController.register);
     authRoutes.post('/login', requireLogin, AuthenticationController.login);
+    authRoutes.delete('/delete/:id', requireAuth, AuthenticationController.delete);
     authRoutes.get('/list', requireAuth, AuthenticationController.userList);
 
     authRoutes.get('/protected', requireAuth, function(req, res){
